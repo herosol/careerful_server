@@ -76,3 +76,4 @@ $route['api/user/save-job-stat']        = 'api/user/save_job_stat';
 $route['api/user/profile-settings']     = 'api/user/profile_settings';
 $route['api/user/save-profile-settings']= 'api/user/save_profile_settings';
 $route['api/user/change-password']      = 'api/user/change_password';
+// $route['api/user/change-password']      = 'api/user/change_password';
