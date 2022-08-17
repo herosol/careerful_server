@@ -14,7 +14,6 @@ class Sitecontent extends Admin_Controller
         $this->data['enable_editor'] = TRUE;
         $this->data['pageView'] = ADMIN . '/site_home';
         if ($vals = $this->input->post()) {
-            pr($vals);
             $content_row = $this->master->getRow($this->table_name, array('ckey' => 'home'));
             $content_row = unserialize($content_row->code);
 
@@ -65,21 +64,30 @@ class Sitecontent extends Admin_Controller
             $sec6s = array('order_no' => $sec6['order_no'],'detail' => $sec6['detail'],'title' => $sec6['title']);
             saveMultiMediaFieldsImgs(UPLOAD_PATH.'images/', $_FILES['sec6_image'], 'sec6_image', 'home-sec6', $sec6Phto['pics'], $sec6s, 'eng', 100);
 
+            // $sec7['title'] = $vals['sec7_title'];
+            // $sec7['detail'] = $vals['sec7_detail'];
+            // $sec7['order_no'] = $vals['sec7_order_no'];
+            // unset($vals['sec7_pics'],$vals['sec7_detail'],$vals['sec7_order_no'],$vals['sec7_title']);
+            // $this->master->delete_where('multi_text', array('section'=> 'home-sec7'));
+            // $sec7s = array('order_no' => $sec7['order_no'],'detail' => $sec7['detail'],'title' => $sec7['title']);
+            // saveMultiMediaFields($sec7s, 'home-sec7');
+
             $sec7['title'] = $vals['sec7_title'];
             $sec7['detail'] = $vals['sec7_detail'];
             $sec7['order_no'] = $vals['sec7_order_no'];
+            $sec7Phto['pics'] = $vals['sec7_pics'];
             unset($vals['sec7_pics'],$vals['sec7_detail'],$vals['sec7_order_no'],$vals['sec7_title']);
             $this->master->delete_where('multi_text', array('section'=> 'home-sec7'));
             $sec7s = array('order_no' => $sec7['order_no'],'detail' => $sec7['detail'],'title' => $sec7['title']);
-            saveMultiMediaFields($sec7s, 'home-sec7');
+            saveMultiMediaFieldsImgs(UPLOAD_PATH.'images/', $_FILES['sec7_image'], 'sec7_image', 'home-sec7', $sec7Phto['pics'], $sec7s, 'eng',900);
 
-            $sec8['title'] = $vals['sec8_title'];
-            $sec8['order_no'] = $vals['sec8_order_no'];
-            $sec8Phto['pics'] = $vals['sec8_pics'];
-            unset($vals['sec8_pics'],$vals['sec8_detail'],$vals['sec8_order_no'],$vals['sec8_title']);
-            $this->master->delete_where('multi_text', array('section'=> 'home-sec8'));
-            $sec8s = array('order_no' => $sec8['order_no'],'detail' => $sec8['detail'],'title' => $sec8['title']);
-            saveMultiMediaFieldsImgs(UPLOAD_PATH.'images/', $_FILES['sec8_image'], 'sec8_image', 'home-sec8', $sec8Phto['pics'], $sec8s, 'eng',900);
+            // $sec8['title'] = $vals['sec8_title'];
+            // $sec8['order_no'] = $vals['sec8_order_no'];
+            // $sec8Phto['pics'] = $vals['sec8_pics'];
+            // unset($vals['sec8_pics'],$vals['sec8_detail'],$vals['sec8_order_no'],$vals['sec8_title']);
+            // $this->master->delete_where('multi_text', array('section'=> 'home-sec8'));
+            // $sec8s = array('order_no' => $sec8['order_no'],'detail' => $sec8['detail'],'title' => $sec8['title']);
+            // saveMultiMediaFieldsImgs(UPLOAD_PATH.'images/', $_FILES['sec8_image'], 'sec8_image', 'home-sec8', $sec8Phto['pics'], $sec8s, 'eng',900);
 
             $data = serialize(array_merge($content_row, $vals));
             $this->master->save($this->table_name,array('code' => $data),'ckey', 'home');
