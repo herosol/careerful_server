@@ -136,8 +136,10 @@ class User extends MY_Controller
             $res = [];
             $res['status'] = 0;
             $post = $this->input->post();
-            
             $this->master->save('saved_jobs', [$post['field'] => $post['value']], 'id', $post['saved_id']);
+            $token = explode('_', doDecode($post['token']));
+            $mem_id = $token[1];
+            $res['jobs'] = $this->member->getSavedJobs($mem_id);
             $res['status'] = 1;
             echo json_encode($res);
             exit;

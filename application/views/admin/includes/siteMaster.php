@@ -482,13 +482,23 @@
         </script>
 
         <script>
+            var rowIndexForClone = 10000;
             jQuery(".addNewRowTbl").click(function(){
+                var isCkeditor = !!jQuery(this).closest('#newTable').attr('isCkeditor');
                 var clonedRow = jQuery(this).closest('#newTable').find('tr:last-child').clone();
+                let name = clonedRow.find('textarea').attr('name');
+
                 clonedRow.find('input').val('').end();
-                clonedRow.find('textarea').val('').end();
+                if(isCkeditor)
+                    clonedRow.find('textarea').parent().empty().html(`<textarea name="${name}" id="id${++rowIndexForClone}" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>`)
+                else
+                    clonedRow.find('textarea').val('').end();
+                
                 clonedRow.find('td:last-child').html('<td class="text-center"><a href="javascript:void(0)" class="delNewRowTbl" id="delNewRowTbl"><i class="fa fa-minus" aria-hidden="true"></i></a></td>');
                 clonedRow.find('img').attr('src',base_url+'assets/images/no-image.svg');
                 jQuery(this).closest('#newTable').before().append(clonedRow);
+                if(isCkeditor)
+                    CKEDITOR.replace(`id${rowIndexForClone}`);
             });
 
             jQuery(document).on('click', '.delNewRowTbl', function () {

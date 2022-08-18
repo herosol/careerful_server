@@ -150,7 +150,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <table class="table table-bordered newTable" id="newTable">
+                        <table class="table table-bordered newTable" id="newTable" isCkeditor="true">
                             <tr style="background-color: #eee">
                                 <th width="25%">Heading</th>
                                 <th>Detail</th>

@@ -29,7 +29,7 @@
                     </div>
                     <br/>
                     <div class="col-md-12">
-                        <table class="table table-bordered newTable" id="newTable">
+                        <table class="table table-bordered newTable" id="newTable" isCkeditor="true">
                             <tr style="background-color: #eee">
                                 <th width="25%">Heading</th>
                                 <th>Detail</th>
@@ -44,7 +44,7 @@
                                         <input type="text" name="heading1_title[]" id="heading1_title" value="<?= $heading1->title; ?>" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading1_detail[]" id="heading1_detail" class="form-control" placeholder="Text" rows="4"><?= $heading1->detail; ?></textarea>
+                                        <textarea name="heading1_detail[]" id="heading1_detail" class="form-control ckeditor" placeholder="Text" rows="4"><?= $heading1->detail; ?></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading1_order_no[]" id="heading1_order_no" value="<?= $heading1->order_no; ?>" class="form-control" placeholder="Order#">
@@ -63,7 +63,7 @@
                                         <input type="text" name="heading1_title[]" id="heading1_title" value="" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading1_detail[]" id="heading1_detail" class="form-control" placeholder="Text" rows="4"></textarea>
+                                        <textarea name="heading1_detail[]" id="heading1_detail" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading1_order_no[]" id="heading1_order_no" value="" class="form-control" placeholder="Order#">
@@ -82,7 +82,7 @@
                     </div>
                     <br/>
                     <div class="col-md-12">
-                        <table class="table table-bordered newTable" id="newTable">
+                        <table class="table table-bordered newTable" id="newTable" isCkeditor="true">
                             <tr style="background-color: #eee">
                                 <th width="25%">Heading</th>
                                 <th>Detail</th>
@@ -97,7 +97,7 @@
                                         <input type="text" name="heading2_title[]" id="heading2_title" value="<?= $heading2->title; ?>" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading2_detail[]" id="heading2_detail" class="form-control" placeholder="Text" rows="4"><?= $heading2->detail; ?></textarea>
+                                        <textarea name="heading2_detail[]" id="heading2_detail" class="form-control ckeditor" placeholder="Text" rows="4"><?= $heading2->detail; ?></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading2_order_no[]" id="heading2_order_no" value="<?= $heading2->order_no; ?>" class="form-control" placeholder="Order#">
@@ -116,7 +116,7 @@
                                         <input type="text" name="heading2_title[]" id="heading2_title" value="" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading2_detail[]" id="heading2_detail" class="form-control" placeholder="Text" rows="4"></textarea>
+                                        <textarea name="heading2_detail[]" id="heading2_detail" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading2_order_no[]" id="heading2_order_no" value="" class="form-control" placeholder="Order#">
@@ -135,7 +135,7 @@
                     </div>
                     <br/>
                     <div class="col-md-12">
-                        <table class="table table-bordered newTable" id="newTable">
+                        <table class="table table-bordered newTable" id="newTable" isCkeditor="true">
                             <tr style="background-color: #eee">
                                 <th width="25%">Heading</th>
                                 <th>Detail</th>
@@ -150,7 +150,7 @@
                                         <input type="text" name="heading3_title[]" id="heading3_title" value="<?= $heading3->title; ?>" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading3_detail[]" id="heading3_detail" class="form-control" placeholder="Text" rows="4"><?= $heading3->detail; ?></textarea>
+                                        <textarea name="heading3_detail[]" id="heading3_detail" class="form-control ckeditor" placeholder="Text" rows="4"><?= $heading3->detail; ?></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading3_order_no[]" id="heading3_order_no" value="<?= $heading3->order_no; ?>" class="form-control" placeholder="Order#">
@@ -169,7 +169,7 @@
                                         <input type="text" name="heading3_title[]" id="heading3_title" value="" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="heading3_detail[]" id="heading3_detail" class="form-control" placeholder="Text" rows="4"></textarea>
+                                        <textarea name="heading3_detail[]" id="heading3_detail" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="heading3_order_no[]" id="heading3_order_no" value="" class="form-control" placeholder="Order#">

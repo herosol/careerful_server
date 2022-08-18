@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <table class="table table-bordered newTable" id="newTable">
+                        <table class="table table-bordered newTable" id="newTable" isCkeditor="true">
                             <tr style="background-color: #eee">
                                 <th width="25%">Heading</th>
                                 <th>Detail</th>
@@ -39,7 +39,7 @@
                                         <input type="text" name="sec2_title[]" id="sec2_title" value="<?= $sec2->title; ?>" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="sec2_detail[]" id="sec2_detail" class="form-control" placeholder="Text" rows="4"><?= $sec2->detail; ?></textarea>
+                                        <textarea name="sec2_detail[]" id="sec2_detail" class="form-control ckeditor" placeholder="Text" rows="4"><?= $sec2->detail; ?></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="sec2_order_no[]" id="sec2_order_no" value="<?= $sec2->order_no; ?>" class="form-control" placeholder="Order#">
@@ -58,7 +58,7 @@
                                         <input type="text" name="sec2_title[]" id="sec2_title" value="" class="form-control" placeholder="Heading">
                                     </td>
                                     <td>
-                                        <textarea name="sec2_detail[]" id="sec2_detail" class="form-control" placeholder="Text" rows="4"></textarea>
+                                        <textarea name="sec2_detail[]" id="sec2_detail" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>
                                     </td>
                                     <td>
                                         <input type="number" name="sec2_order_no[]" id="sec2_order_no" value="" class="form-control" placeholder="Order#">
