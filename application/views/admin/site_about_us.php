@@ -213,7 +213,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="cu_desc" class="control-label">Short Description <span class="symbol required">*</span></label>
-                        <textarea name="cu_desc" id="cu_desc" rows="5" class="form-control" required=""><?= $row['cu_desc'] ?></textarea>
+                        <textarea name="cu_desc" id="cu_desc" rows="5" class="form-control ckeditor" required=""><?= $row['cu_desc'] ?></textarea>
                     </div>
                     <div class="col-md-12">
                         <label for="cu_address" class="control-label"> Address <span class="symbol required">*</span></label>

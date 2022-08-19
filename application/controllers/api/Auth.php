@@ -36,14 +36,17 @@ class Auth extends MY_Controller
                     'valid_email' => 'Please enter a valid email.',
                     'is_unique' => 'This email is already in use.'
                 ]);
-            $this->form_validation->set_rules('password', 'Password', 'trim|required');
-            // $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|callback_is_password_strong', 
-            //     [
-            //         'is_password_strong' => 'Password should contains alteast 1 small letter, 1 capital letter, 1 number, and one special characher.'
-            //     ]);
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]', 
+                [
+                    'min_length' => 'Password should be atleast 6 characters long.'
+                ]);
+            $this->form_validation->set_rules('c_password', 'Confirm Password', 'trim|required|matches[password]', 
+                [
+                    'matches' => 'Your passwords do no match.'
+                ]);
             $this->form_validation->set_rules('language', 'Language', 'trim|required');
-            $this->form_validation->set_rules('ethnicity', 'Ethnicity', 'trim|required');
-            $this->form_validation->set_rules('sexual', 'Sexual Orientation', 'trim|required');
+            // $this->form_validation->set_rules('ethnicity', 'Ethnicity', 'trim|required');
+            // $this->form_validation->set_rules('sexual', 'Sexual Orientation', 'trim|required');
             $this->form_validation->set_rules('nationality', 'Nationality', 'trim|required');
             $this->form_validation->set_rules('edu_current', 'Current Status', 'trim|required');
             $this->form_validation->set_rules('edu_uni', 'University', 'trim|required');
@@ -73,8 +76,8 @@ class Auth extends MY_Controller
                     'mem_phone' => $post['phone'],
                     'mem_pswd'  => doEncode($post['password']),
                     'mem_language'      => $post['language'],
-                    'mem_ethnicity'     => $post['ethnicity'],
-                    'mem_sex'           => $post['sexual'],
+                    // 'mem_ethnicity'     => $post['ethnicity'],
+                    // 'mem_sex'           => $post['sexual'],
                     'mem_disablity'     => $post['disability'],
                     'mem_nationality'   => $post['nationality'],
                     'mem_current_status'=> $post['edu_current'],

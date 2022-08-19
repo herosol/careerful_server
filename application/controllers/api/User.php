@@ -52,6 +52,7 @@ class User extends MY_Controller
     {
         if($this->input->post())
         {
+            pr($_FILES);
             $res = [];
             $res['status'] = 0;
             $res['validationErrors'] = '';
@@ -74,8 +75,8 @@ class User extends MY_Controller
             //         'is_unique' => 'This email is already in use.'
             //     ]);
             $this->form_validation->set_rules('language', 'Language', 'trim|required');
-            $this->form_validation->set_rules('ethnicity', 'Ethnicity', 'trim|required');
-            $this->form_validation->set_rules('sexual', 'Sexual Orientation', 'trim|required');
+            // $this->form_validation->set_rules('ethnicity', 'Ethnicity', 'trim|required');
+            // $this->form_validation->set_rules('sexual', 'Sexual Orientation', 'trim|required');
             $this->form_validation->set_rules('nationality', 'Nationality', 'trim|required');
             $this->form_validation->set_rules('edu_current', 'Current Status', 'trim|required');
             $this->form_validation->set_rules('edu_uni', 'University', 'trim|required');
@@ -94,6 +95,13 @@ class User extends MY_Controller
                 $mem_id = $token[1];
                 // $rando = doEncode(rand(99, 999) . '-' . $post['email']);
                 // $rando = strlen($rando) > 225 ? substr($rando, 0, 225) : $rando;
+                
+                if (isset($_FILES["profile"]["name"]) && $_FILES["profile"]["name"] != "") {
+                    $image = upload_file(UPLOAD_PATH . 'members', 'profile');
+                    $mem_profile = $image['file_name'];
+                }
+
+                die('here');
                 $save_data = [
                     'mem_fname' => ucfirst($post['fname']),
                     'mem_lname' => ucfirst($post['lname']),
