@@ -52,7 +52,6 @@ class User extends MY_Controller
     {
         if($this->input->post())
         {
-            pr($_FILES);
             $res = [];
             $res['status'] = 0;
             $res['validationErrors'] = '';
@@ -95,20 +94,12 @@ class User extends MY_Controller
                 $mem_id = $token[1];
                 // $rando = doEncode(rand(99, 999) . '-' . $post['email']);
                 // $rando = strlen($rando) > 225 ? substr($rando, 0, 225) : $rando;
-                
-                if (isset($_FILES["profile"]["name"]) && $_FILES["profile"]["name"] != "") {
-                    $image = upload_file(UPLOAD_PATH . 'members', 'profile');
-                    $mem_profile = $image['file_name'];
-                }
 
-                die('here');
-                $save_data = [
+				$save_data = [
                     'mem_fname' => ucfirst($post['fname']),
                     'mem_lname' => ucfirst($post['lname']),
                     'mem_phone' => $post['phone'],
                     'mem_language'      => $post['language'],
-                    'mem_ethnicity'     => $post['ethnicity'],
-                    'mem_sex'           => $post['sexual'],
                     'mem_disablity'     => $post['disability'],
                     'mem_nationality'   => $post['nationality'],
                     'mem_current_status'=> $post['edu_current'],
@@ -117,7 +108,22 @@ class User extends MY_Controller
                     'mem_graduate_year' => $post['edu_graduation'],
                     'mem_opportunity'   => $post['job_type'],
                     'mem_industry'      => $post['sector']
+
                 ];
+
+                if (isset($_FILES["profile"]["name"]) && $_FILES["profile"]["name"] != "") {
+                    $image = upload_file(UPLOAD_PATH . 'members', 'profile');
+					generate_thumb(UPLOAD_PATH.'members/',UPLOAD_PATH.'members/',$image['file_name'],100,'thumb_');
+                    $save_data['mem_image'] = $image['file_name'];
+                }
+
+                if (isset($_FILES["document"]["name"]) && $_FILES["document"]["name"] != "") {
+                    $image = upload_file(UPLOAD_PATH . 'members', 'document', 'file');
+                    $save_data['mem_cv'] = $image['file_name'];
+                }
+
+
+
                 $mem_id = $this->member->save($save_data, $mem_id);
                 // $this->session->set_userdata('mem_id', $mem_id);
                 // $this->session->set_userdata('mem_type', $as);

@@ -505,9 +505,14 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['heading1'] = getMultiText('heading1-content');
-            $this->data['heading2'] = getMultiText('heading2-content');
-            $this->data['heading3'] = getMultiText('heading3-content');
+			$rows = $this->master->getRows('career_options_accordians', ['status'=> 1], '', '', 'asc', 'sort_order');
+			$this->data['rows'] = [];
+
+			foreach($rows as $index => $row):
+				$row->accordians = getMultiText('career_options_'.$row->id);
+				$this->data['rows'][] = $row;
+			endforeach;
+			
             http_response_code(200);
             echo json_encode($this->data);
         } 

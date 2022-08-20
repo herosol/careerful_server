@@ -210,11 +210,25 @@
                             <span class="title">FAQs</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'career_options') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/career_options') ?>">
-                            <i class="entypo-doc-text  "></i>
+                    <li class=" <?= ($this->uri->segment(3) == 'career_options' || $this->uri->segment(2) == 'career_options') ? ' opened  active' : '' ?>">
+                        <a href="javascript:void(0)">
+                            <i class="entypo-doc-text"></i>
                             <span class="title">Career Options</span>
                         </a>
+                        <ul>
+                            <li class=" <?= ($this->uri->segment(3) == 'career_options') ? ' active' : '' ?>">
+                                <a href="<?= site_url(ADMIN.'/sitecontent/career_options') ?>">
+                                    <i class="entypo-doc-text  "></i>
+                                    <span class="title">Page Content</span>
+                                </a>
+                            </li>
+                            <li class=" <?= ($this->uri->segment(2) == 'career_options') ? ' active' : '' ?>">
+                                <a href="<?= site_url(ADMIN.'/career_options') ?>">
+                                    <i class="entypo-doc-text  "></i>
+                                    <span class="title">Page Accordians</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class=" <?= ($this->uri->segment(3) == 'testimonials') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/testimonials') ?>">
