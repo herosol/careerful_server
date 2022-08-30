@@ -72,6 +72,66 @@ class Jobs extends Admin_Controller {
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);        
     }
 
+	function upload_bulk()
+	{
+		if(isset($_FILES) && !empty($_FILES['jobsFile']['name']))
+		{
+			$file = $_FILES['jobsFile'];
+			$extension = explode('.', $file['name']);
+			if($extension[1] === 'csv')
+			{
+				$row = 0;
+				if (($handle = fopen($file['tmp_name'], "r")) !== FALSE) {
+					while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+						if(++$row === 1)
+						{
+							continue;
+						}
+						else
+						{
+							$insert = [];
+							if(!empty(trim($data[0])) 
+								&& !empty(trim($data[1]))
+							 	&& !empty(trim($data[3]))
+							 	&& !empty(trim($data[4]))
+							 	&& !empty(trim($data[5]))
+							 	&& !empty(trim($data[6]))
+							 	&& !empty(trim($data[7]))
+							 	&& !empty(trim($data[8]))
+							 	&& !empty(trim($data[9]))
+							 	&& !empty(trim($data[10]))
+							 	&& !empty(trim($data[11]))
+							 	&& !empty(trim($data[12]))
+							 	&& !empty(trim($data[13]))
+							 	&& !empty(trim($data[14]))
+							){
+								$insert['status'] = trim($data[0]) == 'Publish' ? 1 : 0;
+								$insert['company_name'] = trim($data[1]);
+								$insert['company_link'] = trim($data[2]);
+								$insert['job_level'] 	= trim($data[3]);
+								pr($data[0], false);
+							}
+							
+						}
+					}
+				}
+				die();	
+			}
+			else
+			{
+				setMsg('error', 'Please select only csv file.');
+				redirect(ADMIN . '/jobs', 'refresh');
+				exit;
+			}
+		}
+		else
+		{
+			setMsg('error', 'No File was seleted.');
+			redirect(ADMIN . '/jobs', 'refresh');
+			exit;
+		}
+	}
+
     function add_category(){
         $data=$this->input->post();
         $res=array();

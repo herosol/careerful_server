@@ -245,7 +245,13 @@
         <div class="col-md-6">
             <h2 class="no-margin"><i class="entypo-list"></i> Manage <strong>Jobs</strong></h2>
         </div>
-         <div class="col-md-6 text-right">
+         <div class="col-md-3 text-right">
+		 	<form action="<?=base_url()?>admin/jobs/upload_bulk" method="POST" enctype="multipart/form-data" >
+				<input type="file" name="jobsFile" class="btn btn-lg btn-default" style="display: inline">
+				<button type="submit" class="btn btn-lg btn-default" style="display: inline">Bulk Upload</button>
+			</form>
+        </div>
+		<div class="col-md-3 text-right">
             <a href="<?= base_url(ADMIN . '/jobs/manage'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-plus-circle"></i> Add New</a>
         </div>
     </div>
