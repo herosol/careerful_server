@@ -75,6 +75,13 @@ function get_product_cat_name($id)
     $row = $CI->master->getRow('categories', array('id' => $id));
     return ($row->title);
 }
+function get_job_profiles()
+{
+    global $CI;
+    $CI = get_instance();
+    return $CI->master->getRows('job_profiles', array('status' => 1));
+    
+}
 function get_product_brand_name($id)
 {
     global $CI;

@@ -47,7 +47,8 @@ class Pages extends MY_Controller
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
             $this->data['partners']  = $this->master->get_data_rows('partners', ['status'=> '1']); 
-            $this->data['sponsors']  = $this->master->get_data_rows('visa_sponsors', ['status'=> '1']); 
+            $this->data['sponsors']  = $this->master->get_data_rows('visa_sponsors', ['status'=> '1', 'slider'=> 1]); 
+            $this->data['sponsors2']  = $this->master->get_data_rows('visa_sponsors', ['status'=> '1', 'slider'=> 2]); 
             $this->data['testimonials']  = $this->master->get_data_rows('testimonials', ['status'=> '1']); 
             $this->data['sec6s'] = getMultiText('home-sec6');
             $this->data['sec7s'] = getMultiText('home-sec7');
@@ -419,7 +420,7 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['tests'] = $this->master->getRows('online_test_categories', ['status'=> 1], '', '', 'desc', 'id');
+            $this->data['tests'] = $this->master->getRows('online_test_categories', ['status'=> 1], '', '', 'asc', 'sort_order');
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -630,7 +631,7 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['profiles'] = $this->master->getRows('job_profiles', ['status'=> 1], '', '', 'desc', 'id');
+            $this->data['profiles'] = $this->master->getRows('job_profiles', ['status'=> 1], '', '', 'asc', 'sort_order');
             http_response_code(200);
             echo json_encode($this->data);
         } 

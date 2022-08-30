@@ -286,6 +286,7 @@
                         <tr style="background-color: #eee">
                             <th width="10%">Image</th>
                             <th width="25%">Heading</th>
+                            <th width="25%">Link</th>
                             <th width="10%">Order#</th>
                             <th width="4%" class="text-center"><a href="javascript:void(0)" id="addNewRowTbl" class="addNewRowTbl"><i class="fa fa-plus" aria-hidden="true"></i></a></th>
                         </tr>
@@ -303,6 +304,19 @@
                                 </td>
                                 <td>
                                     <input type="text" name="sec6_title[]" id="sec6_title" value="<?= $sec6->title; ?>" class="form-control" placeholder="Heading">
+                                </td>
+                                <td>
+                                    <select name="sec6_txt1[]" id="sec6_txt1[]" class="form-control" required>
+                                        <option value=''>-- Select --</option>
+                                        <option value='all' <?= ($sec6->txt1 == 'all') ? 'selected' : '' ?>>-- Show All --</option>
+
+                                        <?php $pages = get_job_profiles();
+                                        foreach ($pages as $index => $page) { ?>
+                                            <option value="<?= $page->id ?>" <?= ($sec6->txt1 == $page->id) ? 'selected' : '' ?>> <?= $page->title ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="number" name="sec6_order_no[]" id="sec6_order_no" value="<?= $sec6->order_no; ?>" class="form-control" placeholder="Order#">
@@ -326,6 +340,18 @@
                                 </td>
                                 <td>
                                     <input type="text" name="sec6_title[]" id="sec6_title" value="" class="form-control" placeholder="Heading">
+                                </td>
+                                <td>
+                                    <select name="sec6_txt1[]" id="sec6_txt1[]" class="form-control" required>
+                                        <option value=''>-- Select --</option>
+                                        <option value='all'>-- Show All --</option>
+                                        <?php $pages = get_job_profiles();
+                                        foreach ($pages as $index => $page) { ?>
+                                            <option value="<?= $page->id ?>"> <?= $page->title ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="number" name="sec6_order_no[]" id="sec6_order_no" value="" class="form-control" placeholder="Order#">

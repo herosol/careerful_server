@@ -58,10 +58,11 @@ class Sitecontent extends Admin_Controller
 
             $sec6['title'] = $vals['sec6_title'];
             $sec6['order_no'] = $vals['sec6_order_no'];
+            $sec6['txt1'] = $vals['sec6_txt1'];
             $sec6Phto['pics'] = $vals['sec6_pics'];
-            unset($vals['sec6_pics'],$vals['sec6_detail'],$vals['sec6_order_no'],$vals['sec6_title']);
+            unset($vals['sec6_pics'],$vals['sec6_detail'],$vals['sec6_order_no'],$vals['sec6_title'], $vals['sec6_txt1']);
             $this->master->delete_where('multi_text', array('section'=> 'home-sec6'));
-            $sec6s = array('order_no' => $sec6['order_no'],'detail' => $sec6['detail'],'title' => $sec6['title']);
+            $sec6s = array('order_no' => $sec6['order_no'],'detail' => $sec6['detail'],'title' => $sec6['title'], 'txt1'=> $sec6['txt1']);
             saveMultiMediaFieldsImgs(UPLOAD_PATH.'images/', $_FILES['sec6_image'], 'sec6_image', 'home-sec6', $sec6Phto['pics'], $sec6s, 'eng', 100);
 
             // $sec7['title'] = $vals['sec7_title'];

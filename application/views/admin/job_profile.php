@@ -21,7 +21,7 @@
                                     <div class="panel-title"><h3>Job Basic Information</h3></div>
                                 </div>
                                 <div class="panel-body">
-                                <div class="col-md-12">
+                                    <div class="col-md-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading col-md-12" style="padding: 5.5px 10px"><i class="fa fa-picture-o"></i> Thumbnail </div>
                                             <div class="panel-body thumbnail_blog" style="padding: 10px" id="imgDiv">
@@ -192,6 +192,14 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Sort Order</label>
+                                        <input type="text" name="sort_order" value="<?=$row->sort_order?>" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>  
                         </div>
                     </div>
                     
@@ -227,6 +235,7 @@
                 <th width="13%">Title</th>
                 <th width="20%">Short Description</th>
                 <th>Status</th>
+                <th>Order</th>
                 <th width="15%">Created date</th>
                 <th width="12%" class="text-center">&nbsp;</th>
             </tr>
@@ -242,6 +251,7 @@
                         <td><b><?= $blog->title ?></b></td>
                         <td><b><?= $blog->short_desc ?></b></td>
                         <td><b><?=get_active_status($blog->status)?></b></td>
+                        <td><b><?=$blog->sort_order?></b></td>
                        <td><b><?= format_date($blog->created_date,'M d Y h:i:s A'); ?></b></td>
                         <td class="text-center">
                             <div class="btn-group">

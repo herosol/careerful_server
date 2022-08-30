@@ -24,7 +24,7 @@ class Onlinetest_categories extends Admin_Controller {
 
 
 
-        $this->data['rows'] = $this->master->getRows('online_test_categories');
+        $this->data['rows'] = $this->master->get_data_rows('online_test_categories', [], 'asc', 'sort_order');
 
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
 

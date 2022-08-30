@@ -12,7 +12,7 @@ class Job_profile extends Admin_Controller {
     public function index() {
         $this->data['enable_datatable'] = TRUE;
         $this->data['pageView'] = ADMIN . '/job_profile';
-        $this->data['blogs'] = $this->master->get_data_rows('job_profiles', [], 'desc');
+        $this->data['blogs'] = $this->master->get_data_rows('job_profiles', [], 'asc', 'sort_order');
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
     }
 
@@ -56,6 +56,7 @@ class Job_profile extends Admin_Controller {
                 'bold_heading'=>$vals['bold_heading'],
                 'long_description'=>$vals['long_description'],
                 'status'=>$vals['status'],
+                'sort_order'=>$vals['sort_order'],
                 'created_date'=>$created_date,
             );
             // pr($values);

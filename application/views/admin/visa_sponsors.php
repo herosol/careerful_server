@@ -61,6 +61,19 @@
                             ?>>Inactive</option>
                         </select>
                         <br>
+                        <label class="control-label" for="status"> Slider <span class="symbol required">*</span></label>
+                        <select name="slider" id="slider" class="form-control">
+                            <option value="1" <?php
+                            if (isset($row->slider) && '1' == $row->slider) {
+                                echo 'selected';
+                            }
+                            ?>>Upper</option>
+                            <option value="2" <?php
+                            if (isset($row->slider) && '2' == $row->slider) {
+                                echo 'selected';
+                            }
+                            ?>>Lower</option>
+                        </select>
                         <!-- <label for="" class="control-label">External Link<span class="symbol required">*</span></label>
                         <input type="text" name="external_link" value="<?= $row->external_link ?>" class="form-control" required> -->
                     </div>
@@ -94,7 +107,7 @@
         <tr>
             <th width="5%" class="text-center">Sr#</th>
             <th>Image</th>
-            <!-- <th>External Link</th> -->
+            <th>Slider Option</th>
             <th>Status</th>
             <th width="12%" class="text-center">&nbsp;</th>
         </tr>
@@ -109,6 +122,7 @@
                     <td><img src="<?=  getImageSrc(UPLOAD_PATH . "/visasponsors/thumb_", $row->image) ?>" height="50" alt="--"></td>
                     <!-- <td><?=  $row->external_link ?></td> -->
                     <td class="text-center"><?= getStatus($row->status); ?></td>
+                    <td class="text-center"><?= $row->slider == 1 ? 'Upper' : 'Lower'; ?></td>
                     <td class="text-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span></button>

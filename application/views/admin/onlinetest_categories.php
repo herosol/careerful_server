@@ -69,6 +69,14 @@
                         </div>
 
                 </div>
+                <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Sort Order</label>
+                                        <input type="text" name="sort_order" value="<?=$row->sort_order?>" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div> 
 
             </div>  
 
@@ -251,6 +259,7 @@
 
 
             <th>Status</th>
+            <th>Sort Order</th>
 
             <th width="12%" class="text-center">&nbsp;</th>
 
@@ -283,6 +292,7 @@
                     <td><b><?= $row->added_date?></b></td>
 
                     <td><?=get_active_status($row->status)?></td>
+                    <td><?=$row->sort_order?></td>
 
                     <td class="text-center">
 
