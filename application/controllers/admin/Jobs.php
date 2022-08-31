@@ -6,6 +6,7 @@ class Jobs extends Admin_Controller {
         parent::__construct();
         $this->isLogged();
         // $this->load->model('newsletter_model');
+        $this->load->model('Pages_model', 'page');
         has_access(10);
     }
 
@@ -105,17 +106,36 @@ class Jobs extends Admin_Controller {
 							 	&& !empty(trim($data[13]))
 							 	&& !empty(trim($data[14]))
 							){
-								$insert['status'] = trim($data[0]) == 'Publish' ? 1 : 0;
+								$insert['status'] = trim(strtolower($data[0])) == 'publish' ? 1 : 0;
 								$insert['company_name'] = trim($data[1]);
 								$insert['company_link'] = trim($data[2]);
 								$insert['job_level'] 	= trim($data[3]);
-								pr($data[0], false);
+								$insert['job_type'] 	= trim($data[4]);
+								$insert['city'] 	    = trim($data[5]);
+								$insert['title'] 	    = trim($data[6]);
+
+                                $job_cat = $this->page->checkJobCategoryExist(trim($data[7]));
+
+								$insert['job_cat'] 	     = $job_cat;
+								$insert['minimum'] 	     = trim($data[8]);
+								$insert['salary_method'] = trim(strtolower($data[9]));
+								$insert['salary_interval'] = trim(strtolower($data[10]));
+								$insert['min_salary'] = str_replace(',','', trim($data[11]));
+								$insert['max_salary'] = str_replace(',','', trim($data[12]));
+                                
+                                $job_expire = format_date(trim($data[13]), 'Y-m-d');
+                                
+								$insert['job_link'] = trim($data[14]);
+
+								$this->master->save('jobs', $insert);
 							}
 							
 						}
 					}
+                    setMsg('success', 'File uploaded successfully! Empty records will be ignored.');
+                    redirect(ADMIN . '/jobs', 'refresh');
+                    exit;
 				}
-				die();	
 			}
 			else
 			{

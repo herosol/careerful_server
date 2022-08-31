@@ -9,6 +9,27 @@
  		$this->load->database();
  		$this->table_name="sitecontent";
  	}
+
+	 function checkJobCategoryExist($val)
+	 {
+		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
+		$this->db->from('job_categories');
+		$row = $this->db->get()->row();
+
+		if(!empty($row))
+		{
+			return $row->id;
+		}
+		else
+		{
+			$arr = [];
+			$arr['title'] = $val;
+			$arr['status'] = 1;
+			$this->db->set($arr);
+			$this->db->insert('job_categories');
+			return $this->db->insert_id();
+		}
+	 }
  	function savePageContent($vals,$page_slug=""){
  		$this->db->set($vals);
  		if($page_slug != ""){
