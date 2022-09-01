@@ -729,6 +729,15 @@ function get_active_status($status)
     }
 }
 
+function get_job_status($status)
+{
+    if ($status == 1) {
+        return '<span class="badge green">Published</span>';
+    } else {
+        return '<span class="badge red">Inactive</span>';
+    }
+}
+
 function service_selected_status($arr, $id)
 {
     if (in_array($id, $arr)) {

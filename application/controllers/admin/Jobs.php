@@ -116,16 +116,18 @@ class Jobs extends Admin_Controller {
 
                                 $job_cat = $this->page->checkJobCategoryExist(trim($data[7]));
 
-								$insert['job_cat'] 	     = $job_cat;
-								$insert['minimum'] 	     = trim($data[8]);
-								$insert['salary_method'] = trim(strtolower($data[9]));
-								$insert['salary_interval'] = trim(strtolower($data[10]));
+								$insert['job_cat'] 	           = $job_cat;
+								$insert['degree_requirement']  = trim($data[8]);
+								$insert['salary_method']       = trim(strtolower($data[9]));
+								$insert['salary_interval']     = trim(strtolower($data[10]));
 								$insert['min_salary'] = str_replace(',','', trim($data[11]));
 								$insert['max_salary'] = str_replace(',','', trim($data[12]));
                                 
                                 $job_expire = format_date(trim($data[13]), 'Y-m-d');
                                 
 								$insert['job_link'] = trim($data[14]);
+								$insert['visa_acceptance'] = trim(strtolower($data[15])) == 'yes' ? 'Yes' : 'No';
+								$insert['description'] = trim($data[16]);
 
 								$this->master->save('jobs', $insert);
 							}

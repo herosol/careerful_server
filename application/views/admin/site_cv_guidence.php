@@ -43,13 +43,18 @@
                                 <span class="btn btn-white btn-file">
                                     <span class="fileinput-new">Select image</span>
                                     <span class="fileinput-exists">Change</span>
-                                    <input type="file" name="image1" accept="image/*" <?php if(empty($row['image1'])){echo 'required=""';}?>>
+                                    <input type="file" name="image1" accept="image/*">
                                 </span>
                                 <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <label for="display_banner_image" class="control-label">Display Image<span class="symbol required">*</span></label>
+                <select name="display_banner_image" id="display_banner_image" class="form-control" required>
+                    <option value='no' <?=$row['display_banner_image'] == 'no' ? 'selected' : ''?>>No</option>
+                    <option value='yes' <?=$row['display_banner_image'] == 'yes' ? 'selected' : ''?>>Yes</option>
+                </select>
             </div>
         </div>
 

@@ -260,10 +260,9 @@
             <tr>
                 <th width="5%" class="text-center">Sr#</th>
                 <th width="13%">Company Name</th>
-                <th width="13%">Job Type</th>
+                <th width="20%">Job Type, Job Industry</th>
                 <th width="20%">Title</th>
                 <th width="30%">Job Link</th>
-                <th width="5%">Years Of Experiece</th>
                 <th width="10%">Salary Range</th>
                 <th width="10%">Location</th>
                 <th>Status</th>
@@ -280,10 +279,9 @@
                         <td><?= $blog->job_type ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
                         <td><b><?= $blog->title ?></b></td>
                         <td><b><?= $blog->job_link ?></b></td>
-                        <td><b><?= $blog->years_of_experience==10?'10+':$blog->years_of_experience ?></b></td>
-                        <td><b><?= $blog->min_salary.' - '.$blog->max_salary.'/yearly' ?></b></td>
+                        <td><b><?= $blog->min_salary.' - '.$blog->max_salary.' / '.$blog->salary_interval ?></b></td>
                         <td><b><?= $blog->city ?></b></td>
-                        <td><b><?=get_active_status($blog->status)?></b></td>
+                        <td><b><?=get_job_status($blog->status)?></b></td>
                        <td><b><?= format_date($blog->created_date,'M d Y h:i:s A'); ?></b></td>
                         <td class="text-center">
                             <div class="btn-group">
