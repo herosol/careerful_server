@@ -1029,7 +1029,7 @@ class Pages extends MY_Controller
                 $cats     = $this->master->getRows('job_categories', ['status'=> 1], '', '', 'asc', 'id');
                 $this->data['cats'] = [];
                 foreach($cats as $index => $cat):
-                    $num = $this->master->num_rows('jobs', ['job_cat'=> $cat->id]);
+                    $num = $this->master->num_rows('jobs', ['job_cat'=> $cat->id, 'job_expire >' => date('Y-m-d')]);
                     if($num > 0)
                     {
                         $cat->count = $num; 
@@ -1040,7 +1040,7 @@ class Pages extends MY_Controller
                 $types = ['Graduate Jobs', 'Interships', 'Placements', 'Insight Programmes'];
                 $this->data['types'] = [];
                 foreach($types as $index => $type):
-                    $num = $this->master->num_rows('jobs', ['job_type'=> trim($type)]);
+                    $num = $this->master->num_rows('jobs', ['job_type'=> trim($type), 'job_expire >' => date('Y-m-d')]);
                     if($num > 0)
                     {
                         $t = new stdClass();
@@ -1053,7 +1053,7 @@ class Pages extends MY_Controller
                 $degree_req = ['Collage Degree', 'University Degree', 'Graduate Diploma', 'Not Specified', 'No Minimum Requirement'];
                 $this->data['degree_req'] = [];
                 foreach($degree_req as $index => $requirement):
-                    $num = $this->master->num_rows('jobs', ['degree_requirement'=> trim($requirement)]);
+                    $num = $this->master->num_rows('jobs', ['degree_requirement'=> trim($requirement), 'job_expire >' => date('Y-m-d')]);
                     if($num > 0)
                     {
                         $t = new stdClass();
@@ -1066,7 +1066,7 @@ class Pages extends MY_Controller
                 $cities = $this->page->getJobCities();
                 $this->data['cities'] = [];
                 foreach($cities as $index => $city):
-                    $num = $this->master->num_rows('jobs', ['city'=> $city->city]);
+                    $num = $this->master->num_rows('jobs', ['city'=> $city->city, 'job_expire >' => date('Y-m-d')]);
                     if($num > 0)
                     {
                         $city->count = $num; 
@@ -1075,7 +1075,8 @@ class Pages extends MY_Controller
                 endforeach;
     
                 $this->data['jobs'] =  [];
-                $jobs = $this->master->getRows('jobs', ['status'=> 1], '', '', 'desc', 'id');
+                $jobs = $this->master->getRows('jobs', ['status'=> 1, 'job_expire >' => date('Y-m-d')], '', '', 'desc', 'id');
+				// pr($this->db->last_query());
                 foreach($jobs as $index => $j):
                     $num = $this->master->num_rows('saved_jobs', ['mem_id'=> $mem_id, 'job_id'=> $j->id]);
                     $j->saved = false;

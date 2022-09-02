@@ -103,7 +103,7 @@
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <div class="panel-heading col-md-12">
+                                <!-- <div class="panel-heading col-md-12">
                                     <div class="panel-title"><h3>Experience</h3></div>
                                 </div>
                                 <div class="panel-body">
@@ -117,7 +117,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
+                                <div class="clearfix"></div> -->
 
                                 <div class="panel-heading col-md-12">
                                     <div class="panel-title"><h3>Salary Range</h3></div>
@@ -255,14 +255,18 @@
             <a href="<?= base_url(ADMIN . '/jobs/manage'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-plus-circle"></i> Add New</a>
         </div>
     </div>
+	</br>
+	<form method="post" action="<?=base_url('admin/jobs/deleteAll')?>">
     <table class="table table-bordered datatable" id="table-1">
         <thead>
             <tr>
+				<th width="" class="text-center no_order" style="">
+					<button type="submit" onclick="return confirm('Are you sure to delete?');" name="delete_selected" class="btn btn-sm btn-danger">Delete</button>
+				</th>
                 <th width="5%" class="text-center">Sr#</th>
                 <th width="13%">Company Name</th>
                 <th width="20%">Job Type, Job Industry</th>
                 <th width="20%">Title</th>
-                <th width="30%">Job Link</th>
                 <th width="10%">Salary Range</th>
                 <th width="10%">Location</th>
                 <th>Status</th>
@@ -274,14 +278,16 @@
             <?php if (count($blogs) > 0): $count = 0; ?>
                 <?php foreach ($blogs as $blog):  ?>                    
                     <tr class="odd gradeX">
+						<td class="text-center">
+							<input type="checkbox" name="checkbox_id[]" class="select_checkbox" value="<?= $blog->id ?>">
+						</td>
                         <td class="text-center"><?= ++$count; ?></td>
                         <td><b><?= $blog->company_name ?></b></td>
                         <td><?= $blog->job_type ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
                         <td><b><?= $blog->title ?></b></td>
-                        <td><b><?= $blog->job_link ?></b></td>
                         <td><b><?= $blog->min_salary.' - '.$blog->max_salary.' / '.$blog->salary_interval ?></b></td>
                         <td><b><?= $blog->city ?></b></td>
-                        <td><b><?=get_job_status($blog->status)?></b></td>
+                        <td><b><?=get_job_status($blog->status, $blog->job_expire)?></b></td>
                        <td><b><?= format_date($blog->created_date,'M d Y h:i:s A'); ?></b></td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -299,6 +305,7 @@
             <?php endif; ?>
         </tbody>
     </table>
+	</form>
 <?php endif; ?>
 <script src="<?= base_url('adminassets/js/jquery-3.4.1.js'); ?>"></script>
 <script type="text/javascript">

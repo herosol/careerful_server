@@ -729,9 +729,10 @@ function get_active_status($status)
     }
 }
 
-function get_job_status($status)
+function get_job_status($status, $job_expire)
 {
-    if ($status == 1) {
+	$today_date = date('Y-m-d'); 
+    if ($status == 1 && compare_dates_jobs($today_date, $job_expire, 'Y-m-d')) {
         return '<span class="badge green">Published</span>';
     } else {
         return '<span class="badge red">Inactive</span>';
@@ -1208,10 +1209,22 @@ function is_min_valid_date($date, $format = 'm/d/Y')
 
 function compare_dates($date1, $date2, $format = 'm/d/Y')
 {
+
     $d1 = DateTime::createFromFormat($format, $date1);
     $d2 = DateTime::createFromFormat($format, $date2);
     if ($d1->format('Y-m-d') <= $d2->format('Y-m-d'))
         return true;
+}
+
+function compare_dates_jobs($date1, $date2, $format = 'm/d/Y')
+{
+
+    $d1 = DateTime::createFromFormat($format, $date1);
+    $d2 = DateTime::createFromFormat($format, $date2);
+    if ($d1->format('Y-m-d') < $d2->format('Y-m-d'))
+        return true;
+	else
+		return false;
 }
 
 function chat_message_time($time)

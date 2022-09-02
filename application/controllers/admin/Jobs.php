@@ -51,7 +51,7 @@ class Jobs extends Admin_Controller {
                 'company_link'=>$vals['company_link'],
                 'job_link'=>$vals['job_link'],
                 'visa_acceptance'=>$vals['visa_acceptance'],
-                'years_of_experience'=>$vals['years_of_experience'],
+                // 'years_of_experience'=>$vals['years_of_experience'],
                 'min_salary'=>$vals['min_salary'],
                 'max_salary'=>$vals['max_salary'],
                 'job_type'=>$vals['job_type'],
@@ -185,6 +185,18 @@ class Jobs extends Admin_Controller {
         has_access(17);
         $this->master->delete('jobs','id', $this->uri->segment(4));
         setMsg('success', 'Job has been deleted successfully.');
+        redirect(ADMIN . '/jobs', 'refresh');
+    }
+
+	function deleteAll(){
+        $ids = $this->input->post('checkbox_id');
+        if(!empty($ids)){
+            $delete = $this->master->delete('jobs','id',$ids);
+            setMsg('success', 'Deleted successfully !');
+        }
+        else{
+            setMsg('error', 'Please Select atleast 1 Record !');
+        }
         redirect(ADMIN . '/jobs', 'refresh');
     }
 }

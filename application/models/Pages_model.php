@@ -216,6 +216,7 @@
 		
 
 		$this->db->where(['status'=> 1]);
+		$this->db->where(['job_expire >' => date('Y-m-d')]);
 		if(!empty($post['sortBy']))
 		{
 			$this->db->order_by('id', $post['sortBy']);
