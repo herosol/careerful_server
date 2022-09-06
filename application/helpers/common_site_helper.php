@@ -34,6 +34,20 @@ function get_job_cat($id)
     $row = $CI->master->getRow('job_categories', array('id' => $id));
     return ($row->title);
 }
+function get_company_name($id)
+{
+    global $CI;
+    $CI = get_instance();
+    $row = $CI->master->getRow('job_companies', array('id' => $id));
+    return ($row->title);
+}
+function get_company_image($id)
+{
+    global $CI;
+    $CI = get_instance();
+    $row = $CI->master->getRow('job_companies', array('id' => $id));
+    return ($row->image);
+}
 function countries()
 {
     global $CI;

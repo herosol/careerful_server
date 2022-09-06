@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2022 at 03:54 PM
+-- Generation Time: Sep 06, 2022 at 02:30 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -385,7 +385,7 @@ CREATE TABLE `tbl_jobs` (
   `job_cat` int(11) DEFAULT NULL,
   `degree_requirement` varchar(100) DEFAULT NULL,
   `degree_in` varchar(100) DEFAULT NULL,
-  `company_name` varchar(255) DEFAULT NULL,
+  `company_name` int(11) DEFAULT NULL,
   `company_link` text DEFAULT NULL,
   `job_link` text DEFAULT NULL,
   `visa_acceptance` enum('Yes','No') DEFAULT NULL,
@@ -409,8 +409,15 @@ CREATE TABLE `tbl_jobs` (
 --
 
 INSERT INTO `tbl_jobs` (`id`, `image`, `job_cat`, `degree_requirement`, `degree_in`, `company_name`, `company_link`, `job_link`, `visa_acceptance`, `title`, `description`, `years_of_experience`, `min_salary`, `max_salary`, `job_type`, `job_level`, `salary_method`, `salary_interval`, `city`, `status`, `created_date`, `job_expire`) VALUES
-(1, '7b13b2203029ed80337f27127a9f1d28_1655463841_9286.png', 3, 'Collage Degree', 'IT', 'Envision Technologies Inc.', 'https://careerful.herosolutions.com.pk/open-jobs', 'https://github.com/herosol/traffik_api/blob/development/application/views/admin/blogs.php', 'No', ' Senior Full-Stack Software Engineer - React / Node.Js', '', 3, 50000, 100000, 'Graduate Jobs', NULL, 'range', 'monthly', 'London', 1, '2022-06-17 11:07:47', NULL),
-(2, '7eabe3a1649ffa2b3ff8c02ebfd5659f_1655468906_2979.png', 1, 'University Degree', 'CS', 'Alpha Technologies Inc.', 'https://careerful.herosolutions.com.pk/open-jobs', 'https://github.com/herosol/traffik_api/blob/development/application/views/admin/blogs.php', 'Yes', 'Full-Time Content Creator', '', 5, 40000, 120000, 'Placements', NULL, 'range', 'monthly', 'Liverpool', 1, '2022-06-17 03:27:43', NULL);
+(1, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70660-account-management-internship-summer-2023-english-speaker-2024-graduates/', 'Yes', 'Account Management Internship, Summer 2023 - English Speaker (2024 Graduates)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'Intern', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2022-09-20'),
+(2, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70655-account-management-internship-summer-2023-nordics-speaker-2024-graduates/', 'Yes', 'Account Management Internship, Summer 2023 - Nordics Speaker (2024 Graduates)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1501s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'Intern', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2023-09-20'),
+(3, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70653-account-management-internship-summer-2023-dutch-speaker-2024-graduates/', 'Yes', 'Account Management Internship, Summer 2023 - Dutch Speaker (2024 Graduates)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1502s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'Intern', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2024-09-20'),
+(4, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70262-sales-development-program-london-2023-graduates/', 'Yes', 'Sales Development Program, London (2023 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1503s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'London', 1, '2022-09-06 12:22:37', '2025-09-20'),
+(5, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70214-graduate-account-manager-swedish-finnish-norwegian-danish-speaker-2023-graduates/', 'Yes', 'Graduate Account Manager - Swedish/Finnish/Norwegian/Danish Speaker (2023 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1504s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2026-09-20'),
+(6, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70212-graduate-account-manager-dutch-speaker-2023-graduates/', 'Yes', 'Graduate Account Manager - Dutch Speaker (2023 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1505s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2027-09-20'),
+(7, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/70209-graduate-account-manager-english-speaker-2023-graduates/', 'Yes', 'Graduate Account Manager - English Speaker (2023 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1506s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'Surrey | London', 1, '2022-09-06 12:22:37', '2028-09-20'),
+(8, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/58563-graduate-account-manager-nordics-speaker-2022-graduates/', 'Yes', 'Graduate Account Manager - Nordics Speaker (2022 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1507s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2029-09-20'),
+(9, NULL, 15, 'no-minimum', NULL, 1, '', 'https://jobs.gartner.com/jobs/job/58559-graduate-account-manager-dutch-speaker-2022-graduates/', 'Yes', 'Graduate Account Manager - Dutch Speaker (2022 Graduates, accepts applicants based outside the UK)', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1508s.', 0, 25000, 35000, 'Student & Graduate Jobs', 'graduate', 'range', 'yearly', 'Surrey', 1, '2022-09-06 12:22:37', '2022-09-05');
 
 -- --------------------------------------------------------
 
@@ -434,6 +441,26 @@ INSERT INTO `tbl_job_categories` (`id`, `title`, `status`) VALUES
 (3, 'Information Technology', 1),
 (4, 'Banking & Finance Services', 1),
 (15, 'Information Technology (incl. software, data & analytics)', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_job_companies`
+--
+
+CREATE TABLE `tbl_job_companies` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_job_companies`
+--
+
+INSERT INTO `tbl_job_companies` (`id`, `title`, `image`, `status`) VALUES
+(1, 'Gartner', '8e6b42f1644ecb1327dc03ab345e618b_1662465399_1157.png', 1);
 
 -- --------------------------------------------------------
 
@@ -1633,7 +1660,7 @@ CREATE TABLE `tbl_siteadmin` (
 --
 
 INSERT INTO `tbl_siteadmin` (`site_id`, `site_username`, `site_password`, `site_admin_name`, `site_admin_type`, `site_domain`, `site_name`, `site_email`, `site_order_email`, `site_general_email`, `site_noreply_email`, `site_phone`, `site_fax`, `site_paypal_environment`, `site_sandbox_paypal`, `site_live_paypal`, `site_stripe_secret_key`, `site_stripe_public_key`, `site_ip`, `site_logo`, `site_footer_logo`, `site_icon`, `site_thumb`, `site_address`, `site_about`, `site_city`, `site_state`, `site_zip`, `site_country`, `site_lastlogindate`, `site_copyright`, `site_facebook`, `site_twitter`, `site_google`, `site_instagram`, `site_linkedin`, `site_youtube`, `site_discord`, `site_contact_map`, `site_google_ad`, `site_meta_desc`, `site_meta_keyword`, `site_meta_copyright`, `site_meta_author`, `site_how_to_pay`, `site_status`, `sub_location`, `site_chat`, `sub_featured`, `site_version`, `site_radius`, `site_buyer_credit_percentage`, `site_percentage`, `site_accept_days`, `site_product_msg`, `site_product_calltext`, `site_accept_order`, `site_first_section_heading`, `site_footer_text`, `site_second_section_heading`, `site_third_section_heading`, `site_fourth_section_heading`, `site_field_heading`, `site_field_text`, `site_after_field_heading`, `site_pre_footer_heading`, `site_pre_footer_tagline`, `site_pre_footer_field_text`, `site_pre_footer_button_text`, `site_first_section_sub_1`, `site_first_section_sub_2`, `site_first_section_sub_3`, `site_fourth_section_sub_1`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administration', 'admin', 'www.careerful.com', 'Careerful', 'info@careerful.com', ' orders@zohar.com', ' contactus@careerful.com', 'no-reply@careerful.com', '413-248-8118', '', 1, 'iamgenious.1-facilitator@gmail.com', 'atest@gmail.com', 'sk_test_4yKglgTyIxCetlNijlRBh2zN00MWjZFHsv', 'pk_test_NthcfPBoehkm2AT0fecUIB2w0080vhuO5E', '::1', 'careerful-logo.svg', 'compare-my-laundary-footer-logo.svg', 'careerful-icon.png', 'careerful-thumb.svg', 'Seestrasse 113, 8800 Thalwil Switzerland', 'Compare My Laundar', 'New York', 'WA', '75350', 'USA', '2022-09-01 03:03:18', 'Copyright © 2022 Careerful. All rights reserved.', 'https://www.facebook.com/careerful', 'https://www.twitter.com/careerful', 'https://plus.google.com/mrservicecard', 'https://www.instagram.com/careerful', 'https://www.linkedin.com/prana', 'https://www.youtube.com/careerful', 'https://www.discord.com/prana', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.7250567536676!2d-84.34897039425!3d33.71606266992961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f501790d22f717%3A0x7ff91decdaf344dc!2s1264+Custer+Ave+SE%2C+Atlanta%2C+GA+30316!5e0!3m2!1sen!2s!4v1493122321821', '', 'Careerful\'s Description Will go here', 'HTML,CSS,Careerful', 'New Admin &copy; 2018 All Rights Reserved.', 'Administration', '', 1, 20, 'window.fcWidget.init({\r\ntoken: \"89884c16-15cc-484d-926f-ec74202a584d\",\r\nhost: \"https://wchat.freshchat.com\"\r\n});', 30, 67, 12, 15, 12, 3, 'Call for best price and availability!', 'CALL NOW', 1, 'Career Guide', 'This design is intellectual property of Ilghar Consulting Limited. It should not be copied or reproduced to be used for any purposes other than supporting the web development for Ilghar Consulting Limited (Careeful). Ilghar Consulting Limited will constantly engage with external parties to prevent copy right violations.', 'Quick Links', 'Resources', 'Subscribe to keep update on new products, offers and more.', 'Stay up to date with the latest news and deals!', '@ your email address', 'Follow Us', 'Don’t miss out, Be the first to know', 'Schedule a time to talk with us.', 'Enter your email', 'Let me know', 'Kemp House, 152 - 160 City Road, London, EC1V 2NX', 'support@ukvisajobs.com', '0112-345-345-5544', 'Enter Email Address');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administration', 'admin', 'www.careerful.com', 'Careerful', 'info@careerful.com', ' orders@zohar.com', ' contactus@careerful.com', 'no-reply@careerful.com', '413-248-8118', '', 1, 'iamgenious.1-facilitator@gmail.com', 'atest@gmail.com', 'sk_test_4yKglgTyIxCetlNijlRBh2zN00MWjZFHsv', 'pk_test_NthcfPBoehkm2AT0fecUIB2w0080vhuO5E', '::1', 'careerful-logo.svg', 'compare-my-laundary-footer-logo.svg', 'careerful-icon.png', 'careerful-thumb.svg', 'Seestrasse 113, 8800 Thalwil Switzerland', 'Compare My Laundar', 'New York', 'WA', '75350', 'USA', '2022-09-06 02:20:50', 'Copyright © 2022 Careerful. All rights reserved.', 'https://www.facebook.com/careerful', 'https://www.twitter.com/careerful', 'https://plus.google.com/mrservicecard', 'https://www.instagram.com/careerful', 'https://www.linkedin.com/prana', 'https://www.youtube.com/careerful', 'https://www.discord.com/prana', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.7250567536676!2d-84.34897039425!3d33.71606266992961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f501790d22f717%3A0x7ff91decdaf344dc!2s1264+Custer+Ave+SE%2C+Atlanta%2C+GA+30316!5e0!3m2!1sen!2s!4v1493122321821', '', 'Careerful\'s Description Will go here', 'HTML,CSS,Careerful', 'New Admin &copy; 2018 All Rights Reserved.', 'Administration', '', 1, 20, 'window.fcWidget.init({\r\ntoken: \"89884c16-15cc-484d-926f-ec74202a584d\",\r\nhost: \"https://wchat.freshchat.com\"\r\n});', 30, 67, 12, 15, 12, 3, 'Call for best price and availability!', 'CALL NOW', 1, 'Career Guide', 'This design is intellectual property of Ilghar Consulting Limited. It should not be copied or reproduced to be used for any purposes other than supporting the web development for Ilghar Consulting Limited (Careeful). Ilghar Consulting Limited will constantly engage with external parties to prevent copy right violations.', 'Quick Links', 'Resources', 'Subscribe to keep update on new products, offers and more.', 'Stay up to date with the latest news and deals!', '@ your email address', 'Follow Us', 'Don’t miss out, Be the first to know', 'Schedule a time to talk with us.', 'Enter your email', 'Let me know', 'Kemp House, 152 - 160 City Road, London, EC1V 2NX', 'support@ukvisajobs.com', '0112-345-345-5544', 'Enter Email Address');
 
 -- --------------------------------------------------------
 
@@ -2030,6 +2057,12 @@ ALTER TABLE `tbl_job_categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_job_companies`
+--
+ALTER TABLE `tbl_job_companies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_job_profiles`
 --
 ALTER TABLE `tbl_job_profiles`
@@ -2265,13 +2298,19 @@ ALTER TABLE `tbl_it_skills`
 -- AUTO_INCREMENT for table `tbl_jobs`
 --
 ALTER TABLE `tbl_jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_job_categories`
 --
 ALTER TABLE `tbl_job_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `tbl_job_companies`
+--
+ALTER TABLE `tbl_job_companies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_job_profiles`

@@ -77,13 +77,16 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label class="control-label">Company Name</label>
-                                                <input type="text" name="company_name" value="<?=$row->company_name?>" class="form-control" required>
-                                            </div>
-                                        </div>
-                                    </div>                                  
+                                        <label for="company_name" class="control-label">Company Name<span class="symbol required">*</span></label>
+                                        <select name="company_name" id="company_name" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach ($companies as $index => $c) { ?>
+                                                <option value="<?= $c->id ?>" <?= ($row->company_name == $c->id) ? 'selected' : '' ?>> <?= $c->title ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>                                 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -282,7 +285,7 @@
 							<input type="checkbox" name="checkbox_id[]" class="select_checkbox" value="<?= $blog->id ?>">
 						</td>
                         <td class="text-center"><?= ++$count; ?></td>
-                        <td><b><?= $blog->company_name ?></b></td>
+                        <td><b><?= get_company_name($blog->company_name) ?></b></td>
                         <td><?= $blog->job_type ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
                         <td><b><?= $blog->title ?></b></td>
                         <td><b><?= $blog->min_salary.' - '.$blog->max_salary.' / '.$blog->salary_interval ?></b></td>

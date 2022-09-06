@@ -70,6 +70,7 @@ class Jobs extends Admin_Controller {
         }
         $this->data['row'] = $this->master->get_data_row('jobs',array('id'=>$this->uri->segment('4')));
         $this->data['cats'] = $this->master->get_data_rows('job_categories', ['status'=> 1]);
+        $this->data['companies'] = $this->master->get_data_rows('job_companies', ['status'=> 1], 'asc', 'title');
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);        
     }
 
@@ -107,7 +108,10 @@ class Jobs extends Admin_Controller {
 							 	&& !empty(trim($data[14]))
 							){
 								$insert['status'] = trim(strtolower($data[0])) == 'publish' ? 1 : 0;
-								$insert['company_name'] = trim($data[1]);
+
+                                $company = $this->page->checkCompanyExist(trim($data[1]));
+
+								$insert['company_name'] = $company;
 								$insert['company_link'] = trim($data[2]);
 								$insert['job_level'] 	= trim($data[3]);
 								$insert['job_type'] 	= trim($data[4]);
@@ -123,8 +127,10 @@ class Jobs extends Admin_Controller {
 								$insert['min_salary'] = str_replace(',','', trim($data[11]));
 								$insert['max_salary'] = str_replace(',','', trim($data[12]));
                                 
-                                $job_expire = format_date(trim($data[13]), 'Y-m-d');
+                                $job_expire = db_format_date_csv(trim($data[13]));
+
                                 
+								$insert['job_expire'] = trim($job_expire);
 								$insert['job_link'] = trim($data[14]);
 								$insert['visa_acceptance'] = trim(strtolower($data[15])) == 'yes' ? 'Yes' : 'No';
 								$insert['description'] = trim($data[16]);

@@ -1202,6 +1202,8 @@ class Pages extends MY_Controller
             foreach($jobs as $index => $j):
                 $num = $this->master->num_rows('saved_jobs', ['mem_id'=> $mem_id, 'job_id'=> $j->id]);
                 $j->saved = false;
+                $j->image = get_company_image($j->company_name);
+                $j->company_name = get_company_name($j->company_name);
                 if($num > 0)
                     $j->saved = true;
 

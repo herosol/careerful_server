@@ -1176,6 +1176,13 @@ function format_date_log_format($day, $format = '', $check = true, $default_show
 function db_format_date($d)
 {
     $d = str_replace('-', '/', $d);
+    pr($d);
+    return empty($d) ? '' : date('Y-m-d', strtotime($d));
+}
+
+function db_format_date_csv($d)
+{
+    $d = str_replace('/', '-', $d);
     return empty($d) ? '' : date('Y-m-d', strtotime($d));
 }
 
