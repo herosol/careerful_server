@@ -274,36 +274,36 @@
                             <span class="title">Job Companies</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'job_categories') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/job_categories') ?>">
+                    <li class=" <?= ($this->uri->segment(3) == 'job_industries') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/job_industries') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Job Industries</span>
                         </a>
                     </li>
-                    <!-- <li class=" <?= ($this->uri->segment(3) == 'job_levels') ? ' active' : '' ?>">
+                    <li class=" <?= ($this->uri->segment(3) == 'job_levels') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/job_levels') ?>">
                             <i class="entypo-doc-text"></i>
                             <span class="title">Job Levels</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'job_cats') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/job_cats') ?>">
+                    <li class=" <?= ($this->uri->segment(3) == 'job_categories') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/job_categories') ?>">
                             <i class="entypo-doc-text"></i>
                             <span class="title">Job Categories</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'degree_requirements') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/degree_requirements') ?>">
+                    <li class=" <?= ($this->uri->segment(3) == 'job_degree') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/job_degree') ?>">
                             <i class="entypo-doc-text"></i>
                             <span class="title">Degree Requirements</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'jobs_locations') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/jobs_locations') ?>">
+                    <li class=" <?= ($this->uri->segment(3) == 'job_locations') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/job_locations') ?>">
                             <i class="entypo-doc-text"></i>
                             <span class="title">Job Locations</span>
                         </a>
-                    </li> -->
+                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'jobs') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/jobs') ?>">
                             <i class="entypo-doc-text  "></i>

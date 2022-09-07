@@ -286,10 +286,10 @@
 						</td>
                         <td class="text-center"><?= ++$count; ?></td>
                         <td><b><?= get_company_name($blog->company_name) ?></b></td>
-                        <td><?= $blog->job_type ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
+                        <td><?= get_job_industry($blog->job_industry) ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
                         <td><b><?= $blog->title ?></b></td>
                         <td><b><?= $blog->min_salary.' - '.$blog->max_salary.' / '.$blog->salary_interval ?></b></td>
-                        <td><b><?= $blog->city ?></b></td>
+                        <td><b><?= get_job_city($blog->city) ?></b></td>
                         <td><b><?=get_job_status($blog->status, $blog->job_expire)?></b></td>
                        <td><b><?= format_date($blog->created_date,'M d Y h:i:s A'); ?></b></td>
                         <td class="text-center">

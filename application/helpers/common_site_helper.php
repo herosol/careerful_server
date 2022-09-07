@@ -34,6 +34,27 @@ function get_job_cat($id)
     $row = $CI->master->getRow('job_categories', array('id' => $id));
     return ($row->title);
 }
+function get_job_city($id)
+{
+    global $CI;
+    $CI = get_instance();
+    $row = $CI->master->getRow('job_locations', array('id' => $id));
+    return ($row->title);
+}
+function get_job_industry($id)
+{
+    global $CI;
+    $CI = get_instance();
+    $row = $CI->master->getRow('job_industries', array('id' => $id));
+    return ($row->title);
+}
+function get_job_degree($id)
+{
+    global $CI;
+    $CI = get_instance();
+    $row = $CI->master->getRow('job_degree', array('id' => $id));
+    return ($row->title);
+}
 function get_company_name($id)
 {
     global $CI;

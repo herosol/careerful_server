@@ -31,6 +31,27 @@
 		}
 	 }
 
+	 function checkJobIndustryExist($val)
+	 {
+		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
+		$this->db->from('job_industries');
+		$row = $this->db->get()->row();
+
+		if(!empty($row))
+		{
+			return $row->id;
+		}
+		else
+		{
+			$arr = [];
+			$arr['title'] = $val;
+			$arr['status'] = 1;
+			$this->db->set($arr);
+			$this->db->insert('job_industries');
+			return $this->db->insert_id();
+		}
+	 }
+
 	 function checkCompanyExist($val)
 	 {
 		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
@@ -48,6 +69,69 @@
 			$arr['status'] = 1;
 			$this->db->set($arr);
 			$this->db->insert('job_companies');
+			return $this->db->insert_id();
+		}
+	 }
+
+	function checkLevelExist($val)
+	 {
+		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
+		$this->db->from('job_levels');
+		$row = $this->db->get()->row();
+
+		if(!empty($row))
+		{
+			return $row->id;
+		}
+		else
+		{
+			$arr = [];
+			$arr['title'] = $val;
+			$arr['status'] = 1;
+			$this->db->set($arr);
+			$this->db->insert('job_levels');
+			return $this->db->insert_id();
+		}
+	 }
+
+	 function checkLocationExist($val)
+	 {
+		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
+		$this->db->from('job_locations');
+		$row = $this->db->get()->row();
+
+		if(!empty($row))
+		{
+			return $row->id;
+		}
+		else
+		{
+			$arr = [];
+			$arr['title'] = $val;
+			$arr['status'] = 1;
+			$this->db->set($arr);
+			$this->db->insert('job_locations');
+			return $this->db->insert_id();
+		}
+	 }
+
+	 function checkDegreeExist($val)
+	 {
+		$this->db->where(['LOWER(title)'=> $val, 'status'=> 1]);
+		$this->db->from('job_degree');
+		$row = $this->db->get()->row();
+
+		if(!empty($row))
+		{
+			return $row->id;
+		}
+		else
+		{
+			$arr = [];
+			$arr['title'] = $val;
+			$arr['status'] = 1;
+			$this->db->set($arr);
+			$this->db->insert('job_degree');
 			return $this->db->insert_id();
 		}
 	 }
@@ -157,8 +241,10 @@
 
 	function fetch_jobs_data($post)
 	{
-		$this->db->select('*');
-		$this->db->from('jobs');
+		$this->db->select('j.*');
+		$this->db->from('jobs j');
+		$this->db->join('job_companies com', 'j.company_name=com.id');
+		$this->db->join('job_locations loc', 'j.city=loc.id');
 
 		// if(isset($post['price']) && !empty(trim($post['price'])))
 		// {
@@ -172,9 +258,9 @@
 			foreach($post['jobCats'] as $key => $value)
 			{
 				if($key == 0)
-					$this->db->where('job_cat', $value);
+					$this->db->where('j.job_industry', $value);
 				else
-					$this->db->or_where('job_cat', $value);
+					$this->db->or_where('j.job_industry', $value);
 			}
 			$this->db->group_end();
 		}
@@ -186,9 +272,9 @@
 			{
 				$value = str_replace('"', '', $value);
 				if($key == 0)
-					$this->db->where('city', $value);
+					$this->db->where('j.city', $value);
 				else
-					$this->db->or_where('city', $value);
+					$this->db->or_where('j.city', $value);
 			}
 			$this->db->group_end();
 		}
@@ -200,9 +286,9 @@
 			{
 				$value = str_replace('"', '', $value);
 				if($key == 0)
-					$this->db->where('job_type', $value);
+					$this->db->where('j.job_cat', $value);
 				else
-					$this->db->or_where('job_type', $value);
+					$this->db->or_where('j.job_cat', $value);
 			}
 			$this->db->group_end();
 		}
@@ -214,9 +300,9 @@
 			{
 				$value = str_replace('"', '', $value);
 				if($key == 0)
-					$this->db->where('degree_requirement', $value);
+					$this->db->where('j.degree_requirement', $value);
 				else
-					$this->db->or_where('degree_requirement', $value);
+					$this->db->or_where('j.degree_requirement', $value);
 			}
 			$this->db->group_end();
 		}
@@ -225,27 +311,27 @@
 		{
 			$keyword = trim($post['searchKeyword']);
 			$this->db->group_start();
-			$this->db->like('title', $keyword);
-			$this->db->or_like('company_name', $keyword);
-			$this->db->or_like('city', $keyword);
+			$this->db->like('j.title', $keyword);
+			$this->db->or_like('com.title', $keyword);
+			$this->db->or_like('loc.title', $keyword);
 			$this->db->group_end();
 		}
 
 		if($post['visaAcceptance'] == 'true')
 		{
-			$this->db->where('visa_acceptance', 'Yes');
+			$this->db->where('j.visa_acceptance', 'Yes');
 		}
 		
 
-		$this->db->where(['status'=> 1]);
-		$this->db->where(['job_expire >' => date('Y-m-d')]);
+		$this->db->where(['j.status'=> 1]);
+		$this->db->where(['j.job_expire >' => date('Y-m-d')]);
 		if(!empty($post['sortBy']))
 		{
-			$this->db->order_by('id', $post['sortBy']);
+			$this->db->order_by('j.id', $post['sortBy']);
 		}
 		else
 		{
-			$this->db->order_by('id', 'desc');
+			$this->db->order_by('j.id', 'desc');
 		}
 
 		return $this->db->get()->result();

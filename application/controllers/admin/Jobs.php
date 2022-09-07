@@ -110,18 +110,25 @@ class Jobs extends Admin_Controller {
 								$insert['status'] = trim(strtolower($data[0])) == 'publish' ? 1 : 0;
 
                                 $company = $this->page->checkCompanyExist(trim($data[1]));
-
 								$insert['company_name'] = $company;
 								$insert['company_link'] = trim($data[2]);
-								$insert['job_level'] 	= trim($data[3]);
-								$insert['job_type'] 	= trim($data[4]);
-								$insert['city'] 	    = trim($data[5]);
+
+								$level = $this->page->checkLevelExist(trim($data[3]));
+								$insert['job_level'] 	= trim($level);
+
+                                $job_cat = $this->page->checkJobCategoryExist(trim($data[4]));
+								$insert['job_cat'] 	= trim($job_cat);
+
+								$location = $this->page->checkLocationExist(trim($data[5]));
+								$insert['city'] 	    = trim($location);
 								$insert['title'] 	    = trim($data[6]);
 
-                                $job_cat = $this->page->checkJobCategoryExist(trim($data[7]));
+                                $job_industry = $this->page->checkJobIndustryExist(trim($data[7]));
+								$insert['job_industry'] = $job_industry;
 
-								$insert['job_cat'] 	           = $job_cat;
-								$insert['degree_requirement']  = trim($data[8]);
+                                $degree = $this->page->checkDegreeExist(trim($data[8]));
+								$insert['degree_requirement']  = trim($degree);
+
 								$insert['salary_method']       = trim(strtolower($data[9]));
 								$insert['salary_interval']     = trim(strtolower($data[10]));
 								$insert['min_salary'] = str_replace(',','', trim($data[11]));
