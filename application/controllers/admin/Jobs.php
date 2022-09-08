@@ -42,19 +42,19 @@ class Jobs extends Admin_Controller {
             //pr($image1);
             //$categories=implode(",",$vals['categories']);
             $values=array(
-                'image'=>$vals['image'],
                 'title'=>$vals['title'],
                 'degree_requirement'=>$vals['degree_requirement'],
-                'degree_in'=>$vals['degree_in'],
                 'job_cat'=>$vals['job_category'],
+                'job_industry'=>$vals['job_industry'],
+                'job_level'=>$vals['job_level'],
                 'company_name'=>$vals['company_name'],
                 'company_link'=>$vals['company_link'],
                 'job_link'=>$vals['job_link'],
                 'visa_acceptance'=>$vals['visa_acceptance'],
-                // 'years_of_experience'=>$vals['years_of_experience'],
                 'min_salary'=>$vals['min_salary'],
                 'max_salary'=>$vals['max_salary'],
-                'job_type'=>$vals['job_type'],
+                'salary_method'=>$vals['salary_method'],
+                'salary_interval'=>$vals['salary_interval'],
                 'city'=>$vals['city'],
                 'status'=>$vals['status'],
                 'created_date'=>$created_date,
@@ -69,8 +69,12 @@ class Jobs extends Admin_Controller {
             }
         }
         $this->data['row'] = $this->master->get_data_row('jobs',array('id'=>$this->uri->segment('4')));
-        $this->data['cats'] = $this->master->get_data_rows('job_categories', ['status'=> 1]);
-        $this->data['companies'] = $this->master->get_data_rows('job_companies', ['status'=> 1], 'asc', 'title');
+        $this->data['companies']  = $this->master->get_data_rows('job_companies', ['status'=> 1], 'asc', 'title');
+        $this->data['industries'] = $this->master->get_data_rows('job_industries', ['status'=> 1], 'asc', 'title');
+        $this->data['levels'] = $this->master->get_data_rows('job_levels', ['status'=> 1], 'asc', 'title');
+        $this->data['categories'] = $this->master->get_data_rows('job_categories', ['status'=> 1], 'asc', 'title');
+        $this->data['degree'] = $this->master->get_data_rows('job_degree', ['status'=> 1], 'asc', 'title');
+        $this->data['locations'] = $this->master->get_data_rows('job_locations', ['status'=> 1], 'asc', 'title');
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);        
     }
 

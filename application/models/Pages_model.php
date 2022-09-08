@@ -246,12 +246,6 @@
 		$this->db->join('job_companies com', 'j.company_name=com.id');
 		$this->db->join('job_locations loc', 'j.city=loc.id');
 
-		// if(isset($post['price']) && !empty(trim($post['price'])))
-		// {
-		//   $priceIndex = explode(';', $post['price']);
-		//   $this->db->where(['(price - discount) >='=> $priceIndex[0], '(price - discount) <='=> $priceIndex[1]]);
-		// }
-
 		if(isset($post['jobCats']) && !empty($post['jobCats']))
 		{
 			$this->db->group_start();

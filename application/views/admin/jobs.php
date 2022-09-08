@@ -22,37 +22,49 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-md-12">
-                                        <label for="job_category" class="control-label">Job Industry<span class="symbol required">*</span></label>
-                                        <select name="job_category" id="job_category" class="form-control" required>
+                                        <label for="job_industry" class="control-label">Job Industry<span class="symbol required">*</span></label>
+                                        <select name="job_industry" id="job_industry" class="form-control" required>
                                             <option value=''>-- Select --</option>
-                                            <?php foreach ($cats as $index => $c) { ?>
-                                                <option value="<?= $c->id ?>" <?= ($row->job_cat == $c->id) ? 'selected' : '' ?>> <?= $c->title ?></option>
+                                            <?php foreach ($industries as $index => $obj) { ?>
+                                                <option value="<?= $obj->id ?>" <?= ($row->job_industry == $obj->id) ? 'selected' : '' ?>> <?= $obj->title ?></option>
                                             <?php
                                             }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label for="degree_requirement" class="control-label">Degree Requirements<span class="symbol required">*</span></label>
-                                                <select name="degree_requirement" id="degree_requirement" class="form-control" required>
-                                                    <option value=''>-- Select --</option>
-                                                    <?php foreach (['Collage Degree', 'University Degree', 'Graduate Diploma', 'Not Specified', 'No Minimum Requirement'] as $dr) : ?>
-                                                        <option value="<?= $dr ?>" <?= $row->degree_requirement == $dr ? 'selected' : '' ?>><?= $dr ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <label for="job_category" class="control-label">Job Type/Category<span class="symbol required">*</span></label>
+                                        <select name="job_category" id="job_category" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach ($categories as $index => $obj) { ?>
+                                                <option value="<?= $obj->id ?>" <?= ($row->job_cat == $obj->id) ? 'selected' : '' ?>> <?= $obj->title ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label class="control-label">Degree In</label>
-                                                <input type="text" name="degree_in" value="<?=$row->degree_in?>" class="form-control" required>
-                                            </div>
-                                        </div>
-                                    </div>                                  
+                                        <label for="degree_requirement" class="control-label">Degree Requirements<span class="symbol required">*</span></label>
+                                        <select name="degree_requirement" id="degree_requirement" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach ($degree as $index => $obj) { ?>
+                                                <option value="<?= $obj->id ?>" <?= ($row->degree_requirement == $obj->id) ? 'selected' : '' ?>> <?= $obj->title ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>                              
+                                    <div class="col-md-12">
+                                        <label for="job_level" class="control-label">Job Level<span class="symbol required">*</span></label>
+                                        <select name="job_level" id="job_level" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach ($levels as $index => $obj) { ?>
+                                                <option value="<?= $obj->id ?>" <?= ($row->job_level == $obj->id) ? 'selected' : '' ?>> <?= $obj->title ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>                              
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -68,15 +80,6 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-md-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading col-md-12" style="padding: 5.5px 10px"><i class="fa fa-picture-o"></i> Thumbnail </div>
-                                            <div class="panel-body thumbnail_blog" style="padding: 10px" id="imgDiv">
-                                                <img src="<?= !empty($row->image) ? get_site_image_src("jobs", $row->image, 'thumb_') : 'http://placehold.it/3000x1000' ?>" style="width: 100px; cursor: pointer;" id="newImg">
-                                                <input type="file" name="image" accept="image/*" id="imgInput">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
                                         <label for="company_name" class="control-label">Company Name<span class="symbol required">*</span></label>
                                         <select name="company_name" id="company_name" class="form-control" required>
                                             <option value=''>-- Select --</option>
@@ -91,7 +94,7 @@
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label class="control-label">Company Link</label>
-                                                <input type="text" name="company_link" value="<?=$row->company_link?>" class="form-control" required>
+                                                <input type="text" name="company_link" value="<?=$row->company_link?>" class="form-control">
                                             </div>
                                         </div>
                                     </div>                                  
@@ -106,24 +109,8 @@
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <!-- <div class="panel-heading col-md-12">
-                                    <div class="panel-title"><h3>Experience</h3></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-12">
-                                        <label for="years_of_experience" class="control-label">Years Of Experience<span class="symbol required">*</span></label>
-                                        <select name="years_of_experience" id="years_of_experience" class="form-control" required>
-                                            <option value=''>-- Select --</option>
-                                            <?php foreach ([1,2,3,4,5,6,7,8,9,10] as $y) : ?>
-                                                <option value="<?= $y ?>" <?= $row->years_of_experience == $y ? 'selected' : '' ?>><?= $y==10?'10+':$y ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div> -->
-
                                 <div class="panel-heading col-md-12">
-                                    <div class="panel-title"><h3>Salary Range</h3></div>
+                                    <div class="panel-title"><h3>Salary Information</h3></div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-md-12">
@@ -141,33 +128,34 @@
                                                 <input type="text" name="max_salary" value="<?=$row->max_salary?>" class="form-control" required>
                                             </div>
                                         </div>
-                                    </div>                                   
+                                    </div>    
+                                    <div class="col-md-12">
+                                        <label for="salary_method" class="control-label">Salary Method<span class="symbol required">*</span></label>
+                                        <select name="salary_method" id="salary_method" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach (['range', 'fixed'] as $sm) : ?>
+                                                <option value="<?= $sm ?>" <?= $row->salary_method == $sm ? 'selected' : '' ?>><?= ucfirst($sm) ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>                               
+                                    <div class="col-md-12">
+                                        <label for="salary_interval" class="control-label">Salary Interval<span class="symbol required">*</span></label>
+                                        <select name="salary_interval" id="salary_interval" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach (['yearly', 'monthly', 'weekly', 'daily'] as $sm) : ?>
+                                                <option value="<?= $sm ?>" <?= $row->salary_interval == $sm ? 'selected' : '' ?>><?= ucfirst($sm) ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>                               
                                     <div class="clearfix"></div>
                                 </div>
 
-
                                 <div class="panel-heading col-md-12">
-                                    <div class="panel-title"><h3>Job Type</h3></div>
+                                    <div class="panel-title"><h3>Suitable For</h3></div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-md-12">
-                                        <label for="job_type" class="control-label">Job Type<span class="symbol required">*</span></label>
-                                        <select name="job_type" id="job_type" class="form-control" required>
-                                            <option value=''>-- Select --</option>
-                                            <?php foreach (['Graduate Jobs', 'Interships', 'Placements', 'Insight Programmes'] as $jt) : ?>
-                                                <option value="<?= $jt ?>" <?= $row->job_type == $jt ? 'selected' : '' ?>><?= $jt ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-
-                                <div class="panel-heading col-md-12">
-                                    <div class="panel-title"><h3>VISA ACCEPTANCE</h3></div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-12">
-                                        <label for="visa_acceptance" class="control-label">Accept Graduate Visa Holders<span class="symbol required">*</span></label>
+                                        <label for="visa_acceptance" class="control-label">Graduate Visa Holders<span class="symbol required">*</span></label>
                                         <select name="visa_acceptance" id="visa_acceptance" class="form-control" required>
                                             <option value=''>-- Select --</option>
                                             <?php foreach (['Yes', 'No'] as $jt) : ?>
@@ -183,13 +171,16 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label class="control-label">City</label>
-                                                <input type="text" name="city" value="<?=$row->city?>" class="form-control" required>
-                                            </div>
-                                        </div>
-                                    </div>                                 
+                                        <label for="city" class="control-label">Location<span class="symbol required">*</span></label>
+                                        <select name="city" id="city" class="form-control" required>
+                                            <option value=''>-- Select --</option>
+                                            <?php foreach ($locations as $index => $obj) { ?>
+                                                <option value="<?= $obj->id ?>" <?= ($row->city == $obj->id) ? 'selected' : '' ?>> <?= $obj->title ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>                                
                                     <div class="clearfix"></div>
                                 </div>
                             </div>                            
@@ -285,7 +276,7 @@
 							<input type="checkbox" name="checkbox_id[]" class="select_checkbox" value="<?= $blog->id ?>">
 						</td>
                         <td class="text-center"><?= ++$count; ?></td>
-                        <td><b><?= get_company_name($blog->company_name) ?></b></td>
+                        <td><b><?= get_company_name($blog->company_name) ?></b><br/><img src="<?=get_site_image_src("companies", get_company_image($blog->company_name), 'thumb_') ?>" height="50" alt="--"></td>
                         <td><?= get_job_industry($blog->job_industry) ?><br/><b><?= get_job_cat($blog->job_cat) ?></b></td>
                         <td><b><?= $blog->title ?></b></td>
                         <td><b><?= $blog->min_salary.' - '.$blog->max_salary.' / '.$blog->salary_interval ?></b></td>
